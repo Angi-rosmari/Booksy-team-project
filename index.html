@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/goit-js-hw-team-project/assets/favicon-CidYelL4.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booksy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+    />
+    <script type="module" crossorigin src="/goit-js-hw-team-project/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-team-project/assets/vendor-Bp3hbnCQ.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-team-project/assets/vendor-ifWqv4Y0.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-team-project/assets/index-Cuvh4Bu5.css">
+  </head>
+  <body>
+    <header class="header">
+  <div class="container">
+    <a href="./index.html" class="logo">
+      <svg class="logo-icon" width="84" height="36">
+        <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-logo"></use>
+      </svg>
+    </a>
+
+    <nav class="nav">
+      <a href="./index.html" class="nav-link">Home</a>
+      <a href="#books" class="nav-link">Books</a>
+      <a href="#feedbacks" class="nav-link">Feedbacks</a>
+      <a href="#events" class="nav-link">Events</a>
+      <a href="#location" class="nav-link">Location</a>
+    </nav>
+    <button class="menu-btn" aria-label="menu">
+      <svg class="menu-icon" width="24" height="24">
+        <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-navbar"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <a href="/index.html" class="logo">
+        <svg class="logo-icon" width="84" height="36">
+          <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-logo"></use>
+        </svg>
+      </a>
+      <button class="close-btn" aria-label="close menu">
+        <svg class="close-icon" width="24" height="24">
+          <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="mobile-nav">
+      <a href="#home" class="mobile-nav-link">Home</a>
+      <a href="#books" class="mobile-nav-link">Books</a>
+      <a href="#feedbacks" class="mobile-nav-link">Feedbacks</a>
+      <a href="#events" class="mobile-nav-link">Events</a>
+      <a href="#location" class="mobile-nav-link">Location</a>
+    </nav>
+  </div>
+</header>
+
+
+    <section class="hero-section" id="hero">
+  <div class="container">
+    <div class="hero-swiper">
+      <ul class="hero-swiper-wrapper">
+     <li class="hero-swiper-slide">
+  <picture>
+    <source
+      media="(max-width: 767px)"
+      srcset="/goit-js-hw-team-project/assets/hero-mob-1x-Dtw2RVNi.jpg 1x, /goit-js-hw-team-project/assets/hero-mob-1x-Dtw2RVNi.jpg 2x"
+    />
+    <source
+      media="(min-width: 768px) and (max-width: 1439px)"
+      srcset="/goit-js-hw-team-project/assets/hero-tabl-1x-Ax0v-arr.jpg 1x, /goit-js-hw-team-project/assets/hero-tabl-1x-Ax0v-arr.jpg 2x"
+    />
+    <source
+      media="(min-width: 1440px)"
+      srcset="/goit-js-hw-team-project/assets/hero-desk-1x-SvlM8R0L.jpg 1x, /goit-js-hw-team-project/assets/hero-desk-2x-GkUv_wdO.jpg 2x"
+    />
+    <img
+      src="/goit-js-hw-team-project/assets/hero-desk-1x-SvlM8R0L.jpg"
+      alt="Book promotion: Get 10% off your first order"
+      class="hero-slide-image"
+    />
+  </picture>
+  <h2 class="hero-discount">Get 10% off <br />your first order</h2>
+  <a href="#books" class="shop-btn">Shop Now!</a>
+</li>
+
+<li class="hero-swiper-slide">
+  <picture>
+    <source
+      media="(max-width: 767px)"
+      srcset="data:image/jpeg;base64,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 1x, /goit-js-hw-team-project/assets/slide-mob-2-2x-Bp7g_45U.jpg 2x"
+    />
+    <source
+      media="(min-width: 768px) and (max-width: 1439px)"
+      srcset="/goit-js-hw-team-project/assets/slide-tabl-2-1x-BPC6B3ey.jpg 1x, /goit-js-hw-team-project/assets/slide-tabl-2-2x-DJ3D0eW8.jpg 2x"
+    />
+    <source
+      media="(min-width: 1440px)"
+      srcset="/goit-js-hw-team-project/assets/slide-desk-2-1x-EcpvEXFu.jpg 1x, /goit-js-hw-team-project/assets/slide-desk-2-2x-DPCOTlAr.jpg 2x"
+    />
+    <img
+      src="/goit-js-hw-team-project/assets/slide-desk-2-1x-EcpvEXFu.jpg"
+      alt="Save 15% on selected books"
+      class="hero-slide-image"
+    />
+  </picture>
+  <h2 class="hero-discount">Save 15% on <br />some books</h2>
+  <a href="#books" class="shop-btn">Shop Now!</a>
+</li>
+
+<li class="hero-swiper-slide">
+  <picture>
+    <source
+      media="(max-width: 767px)"
+      srcset="/goit-js-hw-team-project/assets/slide-mob-3-1x-T-gC6z-G.jpg 1x, /goit-js-hw-team-project/assets/slide-mob-3-2x-CsHirftc.jpg 2x"
+    />
+    <source
+      media="(min-width: 768px) and (max-width: 1439px)"
+      srcset="/goit-js-hw-team-project/assets/slide-tabl-3-1x-BYu7bT6I.jpg 1x, /goit-js-hw-team-project/assets/slide-tabl-3-2x-C-zCiG25.jpg 2x"
+    />
+    <source
+      media="(min-width: 1440px)"
+      srcset="/goit-js-hw-team-project/assets/slide-desk-3-1x-JUdxrrIy.jpg 1x, /goit-js-hw-team-project/assets/slide-desk-3-2x-qobiIGmf.jpg 2x"
+    />
+    <img
+      src="/goit-js-hw-team-project/assets/slide-desk-3-1x-JUdxrrIy.jpg"
+      alt="Summer Sale: Up to 40% discounts on books"
+      class="hero-slide-image"
+    />
+  </picture>
+  <h2 class="hero-discount">Summer Sale! <br />Up to -40% discounts</h2>
+  <a href="#books" class="shop-btn">Shop Now!</a>
+</li>
+
+<li class="hero-swiper-slide">
+  <picture>
+    <source
+      media="(max-width: 767px)"
+      srcset="/goit-js-hw-team-project/assets/slide-mob-4-1x-WEKHLTcA.jpg 1x, /goit-js-hw-team-project/assets/slide-mob-4-2x-B5aVWTMc.jpg 2x"
+    />
+    <source
+      media="(min-width: 768px) and (max-width: 1439px)"
+      srcset="/goit-js-hw-team-project/assets/slide-tabl-4-1x-BbWkpnba.jpg 1x, /goit-js-hw-team-project/assets/slide-tabl-4-2x-BXdBhv7H.jpg 2x"
+    />
+    <source
+      media="(min-width: 1440px)"
+      srcset="/goit-js-hw-team-project/assets/slide-desk-4-1x-C_UvG6tv.jpg 1x, /goit-js-hw-team-project/assets/slide-desk-4-2x-BbH8NYj_.jpg 2x"
+    />
+    <img
+      src="/goit-js-hw-team-project/assets/slide-desk-4-1x-C_UvG6tv.jpg"
+      alt="Last chance to buy spring bestsellers"
+      class="hero-slide-image"
+    />
+  </picture>
+  <h2 class="hero-discount">Last chance to buy <br />our spring bestsellers</h2>
+  <a href="#books" class="shop-btn">Shop Now!</a>
+</li>
+
+      </ul>
+    </div>
+    <div class="hero-deck">
+      <h1 class="hero-title">Discover Your Next Great Read Today!</h1>
+      <div class="hero-swiper-navigation">
+        <!-- Кнопка "Назад"  -->
+        <button type="button" class="hero-btn-left" aria-label="Previous slide">
+          <svg class="hero-icon" width="14" height="14">
+            <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-left"></use>
+          </svg>
+        </button>
+
+        <!-- Кнопка "Вперед"  -->
+        <button type="button" class="hero-btn-right" aria-label="Next slide">
+          <svg class="hero-icon" width="14" height="14">
+            <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-right"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="books" id="books">
+  <div class="container books-container">
+    <h2 class="visually-hidden">Trending books</h2>
+
+    <div class="left-panel">
+      <div class="header-row">
+        <h3 class="subname">Books</h3>
+        <p class="counter"></p>
+      </div>
+
+      <div class="categories">
+        <div class="select-wrapper">
+          <select class="category-select" id="categories-select"></select>
+          <svg class="select-icon" width="12" height="12">
+            <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-downCategoryFilters"></use>
+          </svg>
+        </div>
+
+        <ul class="categories-list"></ul>
+      </div>
+    </div>
+
+    <div class="gallery-wrapper">
+      <ul class="gallery"></ul>
+      <button type="button" class="load-more">Show More</button>
+    </div>
+
+    <span class="loader"></span>
+  </div>
+</section>
+
+    <section id="feedbacks" class="feedbacks" aria-labelledby="feedbacks-title">
+  <div class="container">
+    <div class="feedbacks__inner">
+      <div class="feedbacks__head">
+        <h2 id="feedbacks-title" class="feedbacks__title">
+          Customer Feedbacks
+        </h2>
+        <p class="feedbacks__subtitle">
+          See what our readers are saying about us!
+        </p>
+      </div>
+
+      <div
+        class="feedbacks__swiper swiper"
+        aria-roledescription="carousel"
+        aria-label="Customer feedbacks slider"
+      >
+        <ul class="swiper-wrapper" role="list">
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Great selection, fast delivery, and beautifully packaged books. My
+              go-to store for weekend reads!
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg"
+                srcset="/goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg 1x, /goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="Jane Doe avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">Jane Doe</span>
+                <span class="feedbacks__role">Book Lover, Reader</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Customer service was super helpful, and my order arrived earlier
+              than expected. Highly recommend!
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png"
+                srcset="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 1x, /goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="John Smith avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">John Smith</span>
+                <span class="feedbacks__role">Editor, BookMag</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Love the curated picks and clear descriptions. Makes it easy to
+              find my next favorite book.
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png"
+                srcset="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 1x, /goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="John Smith avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">Emily Johnson</span>
+                <span class="feedbacks__role">Author, Novelist</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Packaging was eco-friendly and sturdy. The books arrived in
+              perfect condition. Will shop again!
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg"
+                srcset="/goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg 1x, /goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="Jane Doe avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">Jane Doe</span>
+                <span class="feedbacks__role">Book Lover, Reader</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              The recommendations feel personalized. I’ve discovered several new
+              authors I now adore.
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png"
+                srcset="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 1x, /goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="John Smith avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">John Smith</span>
+                <span class="feedbacks__role">Editor, BookMag</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Fast checkout and reliable delivery. The site is easy to navigate
+              and filters really help.
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png"
+                srcset="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 1x, /goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="John Smith avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">Emily Johnson</span>
+                <span class="feedbacks__role">Author, Novelist</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Excellent selection of non-fiction. I’ve found rare titles I
+              couldn’t get elsewhere.
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png"
+                srcset="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 1x, /goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="John Smith avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">John Smith</span>
+                <span class="feedbacks__role">Editor, BookMag</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              I appreciate the staff picks — they never miss! Always something
+              new to inspire me.
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg"
+                srcset="/goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg 1x, /goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="Jane Doe avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">Jane Doe</span>
+                <span class="feedbacks__role">Book Lover, Reader</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Gift wrapping looked amazing. My friend loved it — will use again
+              for birthdays (that's good).
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png"
+                srcset="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 1x, /goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="John Smith avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">Emily Johnson</span>
+                <span class="feedbacks__role">Author, Novelist</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Clear descriptions and honest reviews. Helps me pick the right
+              edition every time.
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png"
+                srcset="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 1x, /goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="John Smith avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">John Smith</span>
+                <span class="feedbacks__role">Editor, BookMag</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Great loyalty discounts. It’s become my default store for new
+              releases (that's good).
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg"
+                srcset="/goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg 1x, /goit-js-hw-team-project/assets/jane-1x-DQ84jRUH.jpg 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="Jane Doe avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">Jane Doe</span>
+                <span class="feedbacks__role">Book Lover, Reader</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="swiper-slide feedbacks__card" role="listitem">
+            <p class="feedbacks__text">
+              Customer support quickly fixed a delivery issue. Impressed with
+              the service quality.
+            </p>
+            <div class="feedbacks__user">
+              <img
+                class="feedbacks__avatar"
+                src="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png"
+                srcset="/goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 1x, /goit-js-hw-team-project/assets/john-1x-Cc4BfkPe.png 2x"
+                width="48"
+                height="48"
+                loading="lazy"
+                alt="John Smith avatar"
+              />
+              <div class="feedbacks__meta">
+                <span class="feedbacks__name">John Smith</span>
+                <span class="feedbacks__role">Editor, BookMag</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feedbacks__controls" aria-label="Slider controls row">
+        <div class="feedbacks__pagination" aria-label="Slider pagination"></div>
+        <div class="feedbacks__nav">
+          <button
+            class="feedbacks__btn feedbacks__btn--prev"
+            type="button"
+            aria-label="Previous slide"
+          >
+            <svg
+              class="feedbacks__icon"
+              width="14"
+              height="14"
+              aria-hidden="true"
+            >
+              <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-left"></use>
+            </svg>
+          </button>
+
+          <button
+            class="feedbacks__btn feedbacks__btn--next"
+            type="button"
+            aria-label="Next slide"
+          >
+            <svg
+              class="feedbacks__icon"
+              width="14"
+              height="14"
+              aria-hidden="true"
+            >
+              <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="section" id="events">
+  <div class="container">
+    <p class="section-name">Events</p>
+    <h2 class="events-title">Upcoming Events at Booksy</h2>
+    <p class="events-text">
+      Discover readings, workshops, and bookish gatherings — online and offline.
+      Everyone’s welcome.
+    </p>
+
+    <!-- ===================Swiper контейнер================== -->
+    <div class="swiper events-swiper">
+      <ul class="swiper-wrapper events-list">
+        <!-- slide 1 -->
+        <li class="swiper-slide events-item">
+          <picture class="events-image">
+            <source
+              srcset="/goit-js-hw-team-project/assets/events-1-1x-CAj8Vgat.jpg 1x, /goit-js-hw-team-project/assets/events-1-2x-C0BIBA2O.jpg 2x"
+            />
+            <img
+              src="/goit-js-hw-team-project/assets/events-1-1x-CAj8Vgat.jpg"
+              width="343"
+              height="248"
+              alt="Cozy Book Club"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+          <div class="events-content-wrapper">
+            <div class="section-register">
+              <p class="events-description">
+                Cozy Book Club — “The Midnight Library”
+              </p>
+              <div class="event-meta">
+                <span class="event-location">In-store </span>
+                <time class="event-time" datetime="2025-06-05T18:30"
+                  >| June 05, 6:30 PM</time
+                >
+              </div>
+              <p class="events-content">
+                Join us for an evening of tea, thoughtful conversation, and
+                shared reflections as we dive into Matt Haig’s bestseller.
+              </p>
+            </div>
+            <button
+              class="event-btn btn-secondary events-btn event-register-btn"
+              data-event="Cozy Book Club — “The Midnight Library”"
+              type="button"
+            >
+              Register
+              <svg class="icon-chevron-right" width="24" height="24">
+                <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-chevron-right"></use>
+              </svg>
+            </button>
+          </div>
+        </li>
+
+        <!-- =================== slide 2==================== -->
+        <li class="swiper-slide events-item">
+          <picture class="events-image">
+            <source
+              srcset="/goit-js-hw-team-project/assets/events-2-1x-CnhjHQ6N.jpg 1x, /goit-js-hw-team-project/assets/events-2-2x-CFShDpYe.jpg 2x"
+            />
+            <img
+              src="/goit-js-hw-team-project/assets/events-2-1x-CnhjHQ6N.jpg"
+              width="343"
+              height="248"
+              loading="lazy"
+              decoding="async"
+              alt="Book Cover Design Workshop"
+            />
+          </picture>
+          <div class="events-content-wrapper">
+            <div>
+              <p class="events-description">Book Cover Design Workshop</p>
+              <div class="event-meta">
+                <span class="event-location">Online </span>
+                <time datetime="2025-06-12T19:00">| June 12, 7:00 PM</time>
+              </div>
+              <p class="events-content">
+                A hands-on session for aspiring designers and curious readers.
+                Learn what makes a cover stand out — from concept to print.
+              </p>
+            </div>
+            <button
+              class="event-btn btn-secondary events-btn event-register-btn"
+              data-event="Book Cover Design Workshop"
+              type="button"
+            >
+              Register
+              <svg class="icon-chevron-right" width="24" height="24">
+                <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-chevron-right"></use>
+              </svg>
+            </button>
+          </div>
+        </li>
+
+        <!-- <!================ slide 3 ==========================> -->
+        <li class="swiper-slide events-item">
+          <picture class="events-image">
+            <source
+              srcset="/goit-js-hw-team-project/assets/events-3-1x-0sCLLXA0.jpg 1x, /goit-js-hw-team-project/assets/events-3-2x-DNYcrSWa.jpg 2x"
+            />
+            <img
+              src="/goit-js-hw-team-project/assets/events-3-1x-0sCLLXA0.jpg"
+              width="343"
+              height="248"
+              loading="lazy"
+              decoding="async"
+              alt="Children’s Story Hour"
+            />
+          </picture>
+          <div class="events-content-wrapper">
+            <div>
+              <p class="events-description">Children’s Story Hour</p>
+              <div class="event-meta">
+                <span class="event-location">Online </span>
+                <time datetime="2025-06-12T19:00"> | June 12, 7:00 PM</time>
+              </div>
+              <p class="events-content">
+                A magical morning of stories, games, and imagination for our
+                youngest book lovers (ages 4–8).
+              </p>
+            </div>
+            <button
+              class="event-btn btn-secondary events-btn event-register-btn"
+              data-event="Children’s Story Hour"
+              type="button"
+            >
+              Register
+              <svg class="icon-chevron-right" width="24" height="24">
+                <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-chevron-right"></use>
+              </svg>
+            </button>
+          </div>
+        </li>
+      </ul>
+
+      <!-- button and pagination -->
+      <div class="events-controls-wrapper">
+        <ul class="ev-pagination" aria-label="Slides pagination"></ul>
+        <div class="events-buttons-wrapper">
+          <button
+            class="events-swiper-btn-prev arrow"
+            type="button"
+            aria-label="Previous slide"
+            disabled
+          >
+            <svg class="events-icon" width="25" height="25">
+              <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-left-arrow-alt"></use>
+            </svg>
+          </button>
+          <button
+            class="events-swiper-btn-next arrow"
+            type="button"
+            aria-label="Next slide"
+          >
+            <svg class="events-icon" width="25" height="25">
+              <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-right-arrow-alt"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-backdrop" class="backdrop"></div>
+  </div>
+</section>
+
+    <section class="article">
+  <div class="container">
+    <div class="article-content">
+      <h2 class="article-title">
+        Welcome to Booksy – your cozy corner for handpicked reads.
+      </h2>
+      <p class="article-text">
+        We believe books are more than just stories — they’re companions,
+        doorways, and memories. Whether you’re chasing adventures or quiet
+        moments, we’re here to help you find your next favorite book.
+      </p>
+    </div>
+
+    <div class="article-image-wrapper">
+      <picture>
+        <source
+          media="(max-width: 767px)"
+          srcset="/goit-js-hw-team-project/assets/bookshelves-mob-1x-Pk0ChWXv.jpg 1x, /goit-js-hw-team-project/assets/bookshelves-mob-2x-BAjW2IlI.jpg 2x"
+        />
+        <source
+          media="(min-width: 768px) and (max-width: 1439px)"
+          srcset="/goit-js-hw-team-project/assets/bookshelves-tabl-1x-iey2gJbE.jpg 1x, /goit-js-hw-team-project/assets/bookshelves-tabl-2x-B09U1Sk4.jpg 2x"
+        />
+        <source
+          media="(min-width: 1440px)"
+          srcset="/goit-js-hw-team-project/assets/bookshelves-desk-1x-C0yQmaNq.jpg 1x, /goit-js-hw-team-project/assets/bookshelves-desk-2x-B-XgJgjb.jpg 2x"
+        />
+        <img
+          src="/goit-js-hw-team-project/assets/bookshelves-desk-1x-C0yQmaNq.jpg"
+          alt="Person reading in cozy library"
+          class="article-image"
+        />
+      </picture>
+    </div>
+  </div>
+</section>
+
+    <section class="location-section" id="location">
+  <div class="container location__container">
+    <div class="location__top">
+      <div class="location__header">
+        <p class="location__label">Location</p>
+        <h2 class="location__title">How to find us</h2>
+        <p class="location__text1">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          varius enim in eros elementum tristique.
+        </p>
+      </div>
+
+      <address class="location__address-block" aria-label="Contact information">
+        <ul class="location__list">
+          <li class="location__item">
+            <svg class="location__icon" width="24" height="24">
+              <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-email"></use>
+            </svg>
+            <div class="location__info">
+              <p class="location__subtitle">Email</p>
+              <a href="mailto:hello@booksy.com" class="location__link"
+                >hello@booksy.com</a
+              >
+            </div>
+          </li>
+
+          <li class="location__item">
+            <svg class="location__icon" width="24" height="24">
+              <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-phone"></use>
+            </svg>
+            <div class="location__info">
+              <p class="location__subtitle">Phone</p>
+              <a href="tel:+612413043012" class="location__link"
+                >+61 (241) 304-3012</a
+              >
+            </div>
+          </li>
+
+          <li class="location__item">
+            <svg class="location__icon" width="24" height="24">
+              <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-location"></use>
+            </svg>
+            <div class="location__info">
+              <p class="location__subtitle">Office</p>
+              <span class="location__text"
+                >123 Books St, Sydney NSW 2000 AU</span
+              >
+            </div>
+          </li>
+        </ul>
+      </address>
+    </div>
+
+    <div class="location__map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6625.258329411459!2d151.20086699653564!3d-33.873446705126234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae3fa7449bc1%3A0xb5b4043ea960a5fc!2sDymocks%20Sydney!5e0!3m2!1suk!2sua!4v1759927493153!5m2!1suk!2sua"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+    </div>
+  </div>
+</section>
+
+    
+
+    <div class="modal-overlay hidden">
+  <div class="book-modal container">
+    <button class="book-modal-close">
+      <svg class="modal-close-svg" width="16" height="16">
+        <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="modal-content">
+      <img
+        class="modal-book-image"
+        src="/goit-js-hw-team-project/assets/bookshelves-desk-1x-C0yQmaNq.jpg"
+        alt="book-photos"
+      />
+      <div class="modal-book-info">
+        <h4 class="modal-book-title"></h4>
+        <p class="modal-book-author"></p>
+        <p class="modal-book-price"></p>
+
+        <div class="quantity">
+          <button class="minus">-</button>
+          <span class="count">1</span>
+          <button class="plus">+</button>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="add-to-cart">Add to Cart</button>
+          <button type="submit" class="buy-now">Buy Now</button>
+        </div>
+
+        <div class="accordion-container">
+          <div class="ac">
+            <h2 class="ac-header">
+              <button type="button" class="ac-trigger">
+                Description
+                <span class="ac-icons">
+                  <svg class="arrow-open" width="14" height="8">
+                    <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-top"></use>
+                  </svg>
+                  <svg class="arrow-close" width="14" height="8">
+                    <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-downCategoryFilters"></use>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div class="ac-panel">
+              <p class="ac-text modal-book-desc"></p>
+            </div>
+          </div>
+
+          <div class="ac">
+            <h2 class="ac-header">
+              <button type="button" class="ac-trigger">
+                Shipping
+                <span class="ac-icons">
+                  <svg class="arrow-open" width="14" height="8">
+                    <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-top"></use>
+                  </svg>
+                  <svg class="arrow-close" width="14" height="8">
+                    <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-downCategoryFilters"></use>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div class="ac-panel">
+              <p class="ac-text">
+                We ship across the United States within 2–5 business days. All
+                orders are processed through USPS or a reliable courier service.
+                Enjoy free standard shipping on orders over $50.
+              </p>
+            </div>
+          </div>
+
+          <div class="ac">
+            <h2 class="ac-header">
+              <button type="button" class="ac-trigger">
+                Returns
+                <span class="ac-icons">
+                  <svg class="arrow-open" width="14" height="8">
+                    <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-top"></use>
+                  </svg>
+                  <svg class="arrow-close" width="14" height="8">
+                    <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-downCategoryFilters"></use>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div class="ac-panel">
+              <p class="ac-text">
+                You can return an item within 14 days of receiving your order,
+                provided it hasn’t been used and is in its original condition.
+                To start a return, please contact our support team — we’ll guide
+                you through the process quickly and hassle-free.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer class="footer">
+  <div class="container">
+    <div class="footer-container">
+      <!-- Logo -->
+      <div class="logo-navigation-container">
+        <div class="footer-logo-container">
+          <a href="./index.html" class="footer-logo">
+            <svg class="logo-icon" width="84" height="36">
+              <use href="/goit-js-hw-team-project/assets/icons-DqI5jnKl.svg#icon-logo"></use>
+            </svg>
+          </a>
+        </div>
+        <!-- Navigation -->
+        <div class="navigation-container">
+          <ul class="navigation">
+            <li><a href="./index.html" class="navigation-link">Home</a></li>
+            <li><a href="#books" class="navigation-link">Books</a></li>
+            <li><a href="#feedbacks" class="navigation-link">Feedbacks</a></li>
+            <li><a href="#location" class="navigation-link">Location</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Text line -->
+      <div class="sign-up-container">
+        <h2 class="sign-up-title">Join</h2>
+        <div class="signup-button">
+          <form class="sign-up-form" novalidate>
+            <label aria-label="footer-email" class="footer-sign-up">
+              <input
+                type="email"
+                name="footer-email"
+                placeholder="Enter your email"
+                class="footer-input"
+                pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                required
+              />
+            </label>
+            <button class="footer-button" type="submit">Sign Up</button>
+          </form>
+        </div>
+        <p>* Required field</p>
+      </div>
+      <!-- Rights -->
+      <div class="footer-copyright">
+        <p class="footer-copyright-text">
+          &copy; 2025 Booksy. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    <button id="scrollUp" class="scrollup" aria-label="Scroll to top" hidden>
+      <svg
+        class="scrollup__icon"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M12 5l-7 7h4v7h6v-7h4z" fill="currentColor" />
+      </svg>
+    </button>
+  </body>
+</html>
